@@ -1,0 +1,8 @@
+// # Mixins (hàm tái sử dụng như flexbox, media queries)
+
+@mixin flex-center
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

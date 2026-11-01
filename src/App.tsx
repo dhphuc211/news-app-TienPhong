@@ -1,3 +1,5 @@
+import Header from "./Header/Header"
+import MainContent from "./ContentContainer/ContentContainer"
 
 
 
@@ -6,7 +8,8 @@ const App = ()=>
     return (
       <>
       
-        <h1>Tiền Phong News</h1>
+        <Header/>
+        <MainContent/>
       
       </>
     )
