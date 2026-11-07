@@ -1,18 +1,12 @@
-import Header from "./Header/Header"
-import MainContent from "./ContentContainer/ContentContainer"
+
+import { RouterProvider } from "react-router-dom"
+import { router } from "./routers/Routers"
 
 
 
 const App = ()=>
 {
-    return (
-      <>
-      
-        <Header/>
-        <MainContent/>
-      
-      </>
-    )
+    return <RouterProvider router={router}/>
 }
 
 export default App

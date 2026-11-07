@@ -114,4 +114,148 @@
         }
     }
 
+    
+
+}
+
+
+.site_header{
+  font-size: 14px;
+  .top_wrapper{
+    border-left: 1px solid #9CA3AF;
+    border-right: 1px solid #9CA3AF;
+    .container{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+      span{
+        font-size: 14px;
+      }
+      .relate_website{
+        cursor: pointer;
+        .list{
+          margin-right: 20px;
+          text-decoration-line: none;
+          text-align: center;
+          color: black;
+          &:hover{
+            color: #B30000;
+          }
+        }
+      }
+      .lang_social{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        a{
+          font-size: 20px;
+          i{
+            color: #B30000;
+          }
+        }
+        .faYoutube{
+          padding-left: 10px;
+        }
+      }
+    }
+  }
+  .main_wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px 0 20px 0;
+    border: 1px solid #9CA3AF;
+    a{
+      text-decoration-line: none;
+      h1{
+        font-weight: bold;
+        color: #B30000;
+        font-size: 50px;
+        padding-left: 50px;
+        align-items: center;
+        margin-bottom: 2px;
+      }
+      p{
+        color: black;
+      }
+    }
+  }
+  .navigation_wrapper {
+    border-left: 1px solid #9CA3AF;
+    border-right: 1px solid #9CA3AF;
+    border-bottom: 1px solid #9CA3AF;
+    position: sticky;
+
+    .container {
+      max-width: 1198px;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .navigation_list {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      list-style-type: none;
+      overflow-x: auto;
+      scrollbar-width: none;
+      justify-content: space-between;
+
+      li {
+        cursor: pointer;
+        flex-shrink: 0;
+        a {
+          display: block;
+          padding: 10px 7px;
+          text-decoration: none;
+          color: var.$c8;
+          font-size: 15px;
+        }
+      }
+      .homepage {
+        
+          font-size: 20px;
+          color: var.$c8;
+          &.active
+          {
+            color: var.$c1;
+          }
+          
+      }
+
+      .text 
+      {
+        
+          font-size: 13px;
+          font-weight: 500;
+        
+          &.active
+          {
+            color: var.$c2;
+          }
+
+          &:hover 
+          {
+            color: var.$c2;
+          }
+      }
+    }
+
+    .mega_menu {
+      padding: 10px 0 10px 10px;
+      cursor: pointer;
+      font-size: 20px;
+      color: black;
+      margin-left: 8px;
+      border-left: 1px solid #9CA3AF;
+      &:hover {
+        color: #B30000
+      }
+    }
+  }
 }

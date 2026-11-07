@@ -1,18 +1,14 @@
-import { Route, Routes } from 'react-router-dom'
-import { tabs } from '../Header/HeaderData.ts'
+import { Outlet } from 'react-router-dom'
+import Header from '../Header/Header'
+import Footer from '../Footer/Footer'
 
 const MainContent = ()=>
 {
     return (
         <>
-            <Routes>
-                {
-                    tabs.map((tab)=>
-                    (
-                        <Route path={tab.route} element={<tab.component/>}/>
-                    ))
-                }
-            </Routes>
+            <Header/>
+                <Outlet/>
+            <Footer/>
         </>
     )
 }
