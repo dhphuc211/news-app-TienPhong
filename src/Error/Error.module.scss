@@ -1,0 +1,35 @@
+@use '../styles/abstracts/variables' as var;
+
+.main 
+{
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    align-items: center;
+    border-left: 1px solid var.$c12;
+    border-right: 1px solid var.$c12;
+    justify-content: center;
+    h1 
+    {
+        font-size: 100px;
+        text-align: center;
+        color: var.$c14;
+    }
+    h2 
+    {
+        font-size: 30px;
+        text-align: center;
+        color: var.$c9;
+    }
+    p 
+    {
+        margin-top: 8px;
+        text-align: center;
+        a 
+        {
+            text-decoration: none;
+            color: var.$c14;
+            font-weight: 550;
+        }
+    }
+}
