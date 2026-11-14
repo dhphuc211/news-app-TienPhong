@@ -1,10 +1,8 @@
-
+import CategoryPage from '../../components/CategoryPage/CategoryPage'
 
 const KinhTe = ()=>
 {
-    return(
-        <h1>Kinh Tế</h1>
-    )
+    return <CategoryPage slug="kinh-te"/>
 }
 
 export default KinhTe
