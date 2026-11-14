@@ -1,8 +1,10 @@
-import CategoryPage from '../../components/CategoryPage/CategoryPage'
+
 
 const GiaoDuc = ()=>
 {
-    return <CategoryPage slug="giao-duc"/>
+    return(
+        <h1>Giáo Dục</h1>
+    )
 }
 
 export default GiaoDuc

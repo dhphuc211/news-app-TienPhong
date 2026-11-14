@@ -1,8 +1,11 @@
-import CategoryPage from '../../components/CategoryPage/CategoryPage'
+
+
 
 const ThoiSu = ()=>
 {
-    return <CategoryPage slug="thoi-su"/>
+    return (
+        <h1>Thời Sự</h1>
+    )
 }
 
 export default ThoiSu
