@@ -5,11 +5,13 @@ export interface NewsItem{
     pubDate: string;
     description: string;
     thumbnail: string;
+    category: string;
 }
 
 export const fetchRss = async (rssUrl:string):Promise<NewsItem[]> => {
-    const proxy = `https://corsproxy.io/?${encodeURIComponent(rssUrl)}`; // sử dụng allorigins proxxy để tránh CORS
-    const response = await fetch(proxy);
+     // sử dụng localUrl dùng api-rss để tránh CORS
+    const local  = rssUrl.replace('https://tienphong.vn', '/api-rss');
+    const response = await fetch(local);
     if(!response.ok){
         throw new Error('Không lấy được rss');
     }
@@ -24,8 +26,9 @@ export const fetchRss = async (rssUrl:string):Promise<NewsItem[]> => {
         const link = item.querySelector('link')?.textContent?.trim() || '';
         const pubDate = item.querySelector('pubDate')?.textContent?.trim() || '';
         const description = item.querySelector('description')?.textContent?.trim() || '';
-        let thumbnail = item.querySelector('thumbnail')?.textContent?.trim() || item.textContent?.trim() || '';
+        let thumbnail = item.querySelector('thumbnail')?.textContent?.trim() || item.querySelector('image')?.textContent?.trim() || '';
         let cleanDesciption ='';
+        const category = item.querySelector('category')?.textContent?.trim() || '';
 
         if(description){
             // tạo Dom để phần tích html trong mô tả, nội dung tóm tắt chính
@@ -40,12 +43,12 @@ export const fetchRss = async (rssUrl:string):Promise<NewsItem[]> => {
             if(!thumbnail){
                 const img = htmlDoc.querySelector('img');
                 if(img){
-                    thumbnail = img.src;
+                    thumbnail = img.getAttribute('src')||'';
                 }
             }
         }
         //đẩy dữ liệu lên
-        parsedItems.push({title, link, pubDate, description:cleanDesciption.trim(), thumbnail
+        parsedItems.push({title, link, pubDate, description:cleanDesciption.trim(), thumbnail,category
         });
     });
 
