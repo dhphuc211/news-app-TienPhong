@@ -10,7 +10,7 @@ const TrangChu = ()=>
     return(
         <>
 
-            <h1>Trang Chủ</h1>
+
 
             <main className={style.site_body}>
                 <div className={style.container}>
