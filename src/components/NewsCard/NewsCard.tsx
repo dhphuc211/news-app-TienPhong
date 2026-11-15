@@ -11,7 +11,6 @@ type NewsCardType = {
 
 const NewsCard = (props: NewsCardType)=>
 {
-    console.log(props)
     return (
         <article className={scss.card} onClick={()=>
         {
