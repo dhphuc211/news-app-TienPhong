@@ -23,7 +23,8 @@ export const fetchRss = async (rssUrl:string):Promise<NewsItem[]> => {
     items.forEach((item) => {
         // lấy information cơ bản, domparser xử lí CDATA, lấy thumbnail, xử lí description, đẩy dữ liệu lên
         const title = item.querySelector('title')?.textContent?.trim() || '';
-        const link = item.querySelector('link')?.textContent?.trim() || '';
+        const link = item.querySelector('guid')?.textContent?.trim() || ''; //lấy link bài viết gốc từ guid
+    
         const pubDate = item.querySelector('pubDate')?.textContent?.trim() || '';
         const description = item.querySelector('description')?.textContent?.trim() || '';
         let thumbnail = item.querySelector('thumbnail')?.textContent?.trim() || item.querySelector('image')?.textContent?.trim() || '';
