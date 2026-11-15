@@ -1,10 +1,8 @@
-
+import CategoryPage from '../../components/CategoryPage/CategoryPage'
 
 const TheGioi = ()=>
 {
-    return (
-        <h1>Thế Giới</h1>
-    )
+    return <CategoryPage slug="the-gioi"/>
 }
 
 export default TheGioi
