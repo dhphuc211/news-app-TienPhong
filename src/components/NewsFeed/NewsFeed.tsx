@@ -41,9 +41,7 @@ const NewsFeed = ({rssUrl, categoryName }: NewsFeedProps) => {
                                     </a>
                                 </h3>
                                 <div className={style.meta}>
-                                    {item.category&&(<span className={style.category}>{item.category}
-                                    </span>
-                                    )}
+
                                     <span>
                                         {new Date(item.pubDate).toLocaleDateString('vi-VN')}
                                     </span>
