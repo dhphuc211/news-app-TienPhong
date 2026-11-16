@@ -9,9 +9,6 @@ const TrangChu = ()=>
 
     return(
         <>
-
-
-
             <main className={style.site_body}>
                 <div className={style.container}>
                     <NewsFeed
