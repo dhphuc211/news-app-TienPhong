@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import style from './CategoryPage.module.scss'
 import { useNews } from '../../hooks/useNews'
@@ -95,6 +95,9 @@ const CategoryPage = ({ slug }: { slug: string }) =>
             </div>
         </section>
     )
+    useEffect(()=>{
+        setVisibleCount(STEP)
+            ,[slug]})
 }
 
 export default CategoryPage
