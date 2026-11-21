@@ -1,5 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Pixelify+Sans:wght@400..700&family=Press+Start+2P&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
+:root
+{
+    --c1: #B30000;
+    --c2: #8C0000;
+    --c3: #DC2626;
+    --c4: #F9F9F9;
+    --c5: #FFFFFF;
+    --c6: #F3F3F3;
+    --c7: #E5E7EB;
+    --c8: #111827;
+    --c9: #1F2937;
+    --c10: #374151;
+    --c11: #6B7280;
+    --c12: #9CA3AF;
+    --c13: #16A34A;
+    --c14: #DC2626;
+    --c15: #F59E0B;
+}
+
+:root[data-theme='dark']
+{
+    color-scheme: dark;
+    --c1: #FF5A5F;
+    --c2: #FF7B7F;
+    --c3: #F87171;
+    --c4: #17171A;
+    --c5: #121214;
+    --c6: #1C1C20;
+    --c7: #2C2C32;
+    --c8: #F3F4F6;
+    --c9: #E5E7EB;
+    --c10: #CBD0D8;
+    --c11: #9AA1AD;
+    --c12: #7C8493;
+    --c13: #22C55E;
+    --c14: #F87171;
+    --c15: #FBBF24;
+}
+
 *
 {
     margin: 0;
@@ -14,4 +53,6 @@ body
     display: flex;
     justify-content: center;
     min-height: 100vh;
+    background: var(--c5);
+    color: var(--c8);
 }
