@@ -122,8 +122,8 @@
 .site_header{
   font-size: 14px;
   .top_wrapper{
-    border-left: 1px solid #9CA3AF;
-    border-right: 1px solid #9CA3AF;
+    border-left: 1px solid var.$c12;
+    border-right: 1px solid var.$c12;
     .container{
       display: flex;
       align-items: center;
@@ -140,7 +140,7 @@
           text-align: center;
           color: black;
           &:hover{
-            color: #B30000;
+            color: var.$c1;
           }
         }
       }
@@ -151,7 +151,7 @@
         a{
           font-size: 20px;
           i{
-            color: #B30000;
+            color: var.$c1;
           }
         }
         .faYoutube{
@@ -166,12 +166,12 @@
     align-items: center;
     flex-direction: column;
     padding: 20px 0 20px 0;
-    border: 1px solid #9CA3AF;
+    border: 1px solid var.$c12;
     a{
       text-decoration-line: none;
       h1{
         font-weight: bold;
-        color: #B30000;
+        color: var.$c1;
         font-size: 50px;
         padding-left: 50px;
         align-items: center;
@@ -183,9 +183,9 @@
     }
   }
   .navigation_wrapper {
-    border-left: 1px solid #9CA3AF;
-    border-right: 1px solid #9CA3AF;
-    border-bottom: 1px solid #9CA3AF;
+    border-left: 1px solid var.$c12;
+    border-right: 1px solid var.$c12;
+    border-bottom: 1px solid var.$c12;
     position: sticky;
 
     .container {
@@ -252,9 +252,9 @@
       font-size: 20px;
       color: black;
       margin-left: 8px;
-      border-left: 1px solid #9CA3AF;
+      border-left: 1px solid var.$c12;
       &:hover {
-        color: #B30000
+        color: var.$c1
       }
     }
   }

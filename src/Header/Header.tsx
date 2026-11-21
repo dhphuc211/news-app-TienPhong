@@ -2,6 +2,7 @@ import scss from './Header.module.scss'
 import { tabs } from './HeaderData.ts'
 
 import { useNavigate, useLocation, Link } from 'react-router-dom'
+import ThemeToggle from '../components/ThemeToggle/ThemeToggle'
 
 
 
@@ -64,6 +65,7 @@ const Header = ()=>
                     <ul>
                         <li><i className="fa-solid fa-magnifying-glass"></i></li>
                         <li><i className="fa-regular fa-circle-user"></i></li>
+                        <li><ThemeToggle /></li>
                     </ul>
                 </nav>
                 
