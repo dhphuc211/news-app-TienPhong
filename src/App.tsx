@@ -2,6 +2,9 @@
 import { RouterProvider } from "react-router-dom"
 import { router } from "./routers/Routers"
 import { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { fetchAllRss } from "./api/rssService"
+import { loadData } from "./reducers/NewsSlice"
 
 
 
@@ -9,6 +12,20 @@ const App = ()=>
 {
 
     const [isVisible, setIsVisible] = useState<boolean>(false)
+    
+    const dispatch = useDispatch()
+    const news = useSelector(state => state.news)
+
+    useEffect(()=>
+    {
+        const loadNews = async()=>
+        {
+            if(news.length > 0) return;
+            const items = await fetchAllRss()
+            dispatch(loadData(items))
+        }
+        loadNews()
+    }, [dispatch, news.length])
 
     const scrollToTop = ()=>
     {

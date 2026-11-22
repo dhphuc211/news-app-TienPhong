@@ -57,35 +57,26 @@
     }
 
 
-    .pages 
+    .search_bar
     {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        ul 
+      display: flex;
+      align-items: center;
+      flex: 1;
+      height: 40px;
+      margin: auto;
+      padding: 0px 12px;
+      form 
+      {
+        width: 100%;
+        input 
         {
-            list-style: none;
-            display: flex;
-            gap: 12px;
-            
-            li 
-            {
-                font-size: 14px;
-                color: var.$c10;
-                cursor: pointer;
-                font-weight: 550;
-
-                &:hover
-                {
-                    color: var.$c2;
-                }
-
-                &.active 
-                {
-                    color: var.$c2;
-                }
-            }
+          width: 100%;
+          height: 100%;
+          border-radius: 999px;
+          border: 1px solid var.$c12;
+          padding: 8px 12px;
         }
+      }
     }
 
     .actions
@@ -98,7 +89,8 @@
             list-style: none;
             display: flex;
             gap: 12px;
-            
+           
+
             li 
             {
                 font-size: 20px;

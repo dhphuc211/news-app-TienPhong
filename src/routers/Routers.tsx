@@ -3,6 +3,7 @@ import MainContent from "../ContentContainer/ContentContainer";
 import TrangChu from "../pages/TrangChu/TrangChu";
 import Error from "../Error/Error";
 import { tabs } from "../Header/HeaderData";
+import SearchResult from "../pages/SearchResult/SearchResult";
 
 
 
@@ -23,7 +24,11 @@ export const router = createBrowserRouter([
                     path: tab.route,
                     element: <tab.component/>
                 }
-            ))            
+            )),
+            {
+                path: '/search-news/:keyword',
+                element: <SearchResult/>
+            }            
         ]
     }
 ])
