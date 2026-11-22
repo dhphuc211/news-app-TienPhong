@@ -5,7 +5,6 @@ import style from "./TrangChu.module.scss";
 
 const TrangChu = ()=>
 {
-    
 
     return(
         <>

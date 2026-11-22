@@ -1,8 +1,8 @@
 import scss from './Header.module.scss'
-import { tabs } from './HeaderData.ts'
 
 import { useNavigate, useLocation, Link } from 'react-router-dom'
 import ThemeToggle from '../components/ThemeToggle/ThemeToggle'
+import { useState } from 'react'
 
 
 
@@ -12,6 +12,7 @@ const Header = ()=>
 
     const navigate = useNavigate()
     const location = useLocation ()
+    const [searchValue, setSearchValue] = useState<string>("")
                         
     const today = new Date();
     const formattedDate = today.toLocaleDateString('vi-VN',
@@ -39,6 +40,14 @@ const Header = ()=>
         'Video'
     ];
 
+
+    const searchNews = ()=>
+    {
+        navigate(`/search-news/${searchValue.toLowerCase().trim()}`)
+        setSearchValue('')
+    }
+
+
     return(
         <header>
             <div className={scss.header}>
@@ -51,19 +60,24 @@ const Header = ()=>
                         <h2>cơ quan trung ương của đoàn tncs hồ chí minh</h2>
                     </div>
                 </div>
-                <nav className={scss.pages}>
-                    <ul>
+
+                <div className={scss.search_bar}>
+                    <form onSubmit={(e)=>
                         {
-                            tabs.map((tab)=>(
-                                <li className={location.pathname === tab.route ? scss.active : ''} key={tab.title} onClick={()=>{navigate(tab.route)}}>{tab.title}</li>
-                            ))
-                        }
-                    </ul>
-                </nav>
+                            e.preventDefault()
+                            if(!searchValue) return;
+                            searchNews()
+                        }}>
+                        <input type="text" placeholder='Tìm kiếm bài báo...' onChange={(e)=>
+                        {
+                            setSearchValue(e.target.value)
+                        }} value={searchValue}/>
+                    </form>
+                </div>
 
                 <nav className={scss.actions}>
                     <ul>
-                        <li><i className="fa-solid fa-magnifying-glass"></i></li>
+                        <li onClick={()=>{searchNews()}}><i className="fa-solid fa-magnifying-glass"></i></li>
                         <li><i className="fa-regular fa-circle-user"></i></li>
                         <li><ThemeToggle /></li>
                     </ul>
@@ -123,12 +137,6 @@ const Header = ()=>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className={scss.site_body}>
-
-                </div>
-                <div className={scss.site_footer}>
-
                 </div>
         </header>
     )
