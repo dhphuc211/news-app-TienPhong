@@ -64,7 +64,7 @@
       flex: 1;
       height: 40px;
       margin: auto;
-      padding: 0px 12px;
+      padding: 0 12px;
       form 
       {
         width: 100%;
@@ -194,8 +194,6 @@
       display: flex;
       align-items: center;
       list-style-type: none;
-      overflow-x: auto;
-      scrollbar-width: none;
       justify-content: space-between;
 
       li {
@@ -238,6 +236,41 @@
       }
     }
 
+    .dropdown_menu {
+      position: absolute;
+      top: 100%;
+      min-width: 210px;
+      background-color: white;
+      list-style: none;
+      margin: 0;
+      padding: 6px 0;
+      border: 1px solid var.$c1;
+      box-shadow: var.$bx2;
+      z-index: 1100;
+
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(6px);
+
+      li {
+        padding: 8px 16px;
+        font-size: 14px;
+        font-weight: 500;
+        color: black;
+        white-space: nowrap;
+        border-bottom: 1px solid var.$c12;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        &:hover,
+        &.sub_active {
+          background-color: var.$c12;
+          color: var.$c1;
+        }
+      }
+    }
     .mega_menu {
       padding: 10px 0 10px 10px;
       cursor: pointer;
@@ -247,6 +280,56 @@
       border-left: 1px solid var.$c12;
       &:hover {
         color: var.$c1
+      }
+    }
+    .mega_panel {
+      position: absolute;
+      top: 100%;
+      background-color: white;
+      border: 1px solid var.$c1;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+      z-index: 1200;
+      max-height: 75vh;
+      overflow-y: auto;
+      padding: 20px 16px;
+
+      .mega_container {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 10px 10px;
+      }
+
+      .mega_column {
+        h4 {
+          margin: 0 0 8px 0;
+          font-size: 14px;
+          font-weight: 700;
+          color: var.$c1;
+          text-transform: uppercase;
+          cursor: pointer;
+
+          &:hover {
+            color: var.$c2;
+            text-decoration: none;
+          }
+        }
+
+        ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+
+          li {
+            font-size: 14px;
+            color: black;
+            padding: 4px 0;
+            cursor: pointer;
+
+            &:hover {
+              color: var.$c1;
+            }
+          }
+        }
       }
     }
   }
