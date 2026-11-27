@@ -2,7 +2,8 @@ import scss from './Header.module.scss'
 
 import { useNavigate, useLocation, Link } from 'react-router-dom'
 import ThemeToggle from '../components/ThemeToggle/ThemeToggle'
-import { useState } from 'react'
+import {useEffect, useState} from 'react'
+import {Categories, Mega_Categories} from "./HeaderData.ts";
 
 
 
@@ -13,39 +14,30 @@ const Header = ()=>
     const navigate = useNavigate()
     const location = useLocation ()
     const [searchValue, setSearchValue] = useState<string>("")
+    const [isMegaOpen, setIsMegaOpen] = useState<boolean>(false);
+    useEffect(() => {
+       setIsMegaOpen(false)
+    },[location.pathname]);
                         
     const today = new Date();
     const formattedDate = today.toLocaleDateString('vi-VN',
     {
         weekday: 'long' ,day: '2-digit', month: '2-digit', year: 'numeric'
     });
-    const navCategories = [
-        'Mới nhất', 
-        'Xã hội', 
-        'Kinh tế', 
-        'Sóng xanh', 
-        'Địa ốc',
-        'Sức khỏe', 
-        'Thế giới', 
-        'Giới trẻ', 
-        'Pháp luật', 
-        'Thể thao',
-        'Người lính', 
-        'Xe', 
-        'Văn hóa', 
-        'Giải trí', 
-        'Giáo dục',
-        'Khoa học', 
-        'Hoa hậu', 
-        'Video'
-    ];
 
 
     const searchNews = ()=>
     {
+        if(!searchValue.trim()){
+            return;
+        }
         navigate(`/search-news/${searchValue.toLowerCase().trim()}`)
         setSearchValue('')
     }
+    const allCategories = [
+        ...Categories.filter((cate)=>cate.route!=='/moi-nhat'),
+        ...Mega_Categories
+    ];
 
 
     return(
@@ -90,7 +82,7 @@ const Header = ()=>
                             <span>{formattedDate}</span>
                             <div className={scss.relate_website}>
                                 <Link to={'/'} className={scss.list}>Hotline: 0865.015.015</Link>
-                                <Link to={'/'} className={scss.list}>Tiền Phong Nhật báo</Link>
+                                <Link to={'/nhat-bao'} className={scss.list}>Tiền Phong Nhật báo</Link>
                                 <Link to={'/'} className={scss.list}>Sinh viên Việt Nam</Link>
                                 <Link to={'/'} className={scss.list}>Hoa Học trò</Link>
                                 <Link to={'/'} className={scss.list}>Tòa soạn</Link>
@@ -120,22 +112,63 @@ const Header = ()=>
                                    <i className="fa-solid fa-house"></i>
                                 </li>
                                 {
-
-                                    navCategories.map((category, index) => 
-                                    {
-                                        const route = category.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-')
-                                        
+                                    Categories.map((category)=>{
+                                        const isActive= location.pathname===category.route|| category.subCategory?.some((sub)=>sub.route===location.pathname);
                                         return (
-                                            <li key={index} className={`${scss.text} ${location.pathname === ('/'+route) ? scss.active : ''}`} title={category} onClick={()=>{navigate(`/${route}`)}}>{category}</li>
+                                            //phần category khi có thêm phần subcate để menu có thể đổ xuống thấy các mục con
+                                            <li key={category.route} className={`${scss.text} ${isActive ? scss.active : ''}`} title={category.title} onClick={()=>navigate(category.route)}>
+                                                <span>{category.title}</span>
+                                                {category.subCategory && category.subCategory.length>0 && (
+                                                    <ul className={scss.dropdown_menu}>
+                                                        {category.subCategory.map((sub)=>(
+                                                            <li key={sub.route} className={location.pathname===sub.route?scss.sub_active:''}
+                                                                onClick={(e)=>{
+                                                                    e.stopPropagation();
+                                                                    navigate(sub.route);
+                                                                }}
+                                                            >
+                                                                {sub.title}
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                )}
+
+                                            </li>
                                         )
                                     })
 
                                 }
                             </ul>
-                            <div className={scss.mega_menu} title={'Xem thêm'}>
+                            <div className={scss.mega_menu} title={'Xem thêm'} onClick={()=>setIsMegaOpen((prev)=>!prev)}>
                                 <i className="fa-solid fa-bars"></i>
                             </div>
                         </div>
+                        {
+                            isMegaOpen&&(
+                                <div className={scss.mega_panel}>
+                                    <div className={scss.mega_container}>
+                                        {allCategories.map((category)=>(
+                                            <div key={category.route} className={scss.mega_column}>
+                                                <h4 onClick={()=>navigate(category.route)}>{category.title}
+                                                </h4>
+                                                {category.subCategory && category.subCategory.length>0 && (
+                                                    <ul>
+                                                        {category.subCategory.map((sub)=>(
+                                                            <li key={sub.route} onClick={()=>navigate(sub.route)}>
+                                                                {sub.title}
+                                                            </li>
+                                                            )
+                                                        )}
+                                                    </ul>
+
+                                                )}
+
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )
+                        }
                     </div>
                 </div>
         </header>
